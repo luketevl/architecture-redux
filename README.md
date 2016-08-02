@@ -8,7 +8,7 @@ architecture, architecture redux, redux
 - http://redux.js.org/
 - http://tableless.com.br/bem-vindo-ao-redux/
 - https://blog.coderockr.com/conhecendo-o-b%C3%A1sico-do-redux-7315bcf09cef#.lice5dxckau
-
+- https://www.youtube.com/watch?v=DiLVAXlVYR0
 
 # Structure and Data Flow
 - http://redux.js.org/docs/basics/DataFlow.html
