@@ -115,3 +115,39 @@ let todoApp = combineReducers({
 ## Actions
 ```
 ```
+
+## Middlewares
+  - All middlewares have been add to works
+  ```
+    // IMPORT
+  import { applyMiddleware } from 'redux';
+
+    // SET
+  const middleware= applyMiddleware(promisse(), thunk, logger());
+  ```
+### Redux Logger
+  - Registry logs
+  ```
+  import logger from 'redux-logger';
+  ```
+### Thunk
+  - Run _async_ functions
+  ```
+  import thunk from 'redux-thunk';
+  ```
+### Promisse
+  - Create automatically actions with base in result
+  ```
+  import promisse from 'redux-promisse';
+  ```    
+    - Example
+      - The code down, generate the actions:
+        - FECTH_USER_**PENDING**
+        - FECTH_USER_**FULFILLED**
+        - FECTH_USER_**REJECTED**
+    ```
+    store.dispatch({
+      type: 'FECTH_USER',
+      payload: axios.get(URL)
+    })
+    ```
