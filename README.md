@@ -145,9 +145,9 @@ import promisse from 'redux-promisse';
         - FECTH_USER_**PENDING**
         - FECTH_USER_**FULFILLED**
         - FECTH_USER_**REJECTED**
-  ```
-  store.dispatch({
-    type: 'FECTH_USER',
-    payload: axios.get(URL)
-  })
-  ```
+```
+store.dispatch({
+  type: 'FECTH_USER',
+  payload: axios.get(URL)
+})
+```
