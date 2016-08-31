@@ -97,9 +97,34 @@ let todoApp = combineReducers({
 # Setup
 
 ## Plugins
+- React
 - Redux
+- Axios
+- Redux Logger
+- Redux Promise Middleware
+- Redux Thunk
 
 # Code
+## Integrate redux with react
+```
+import React from 'react';
+import ReactDom from 'react-dom';
+
+// Important with redux work
+import { Provider } from 'react-redux';
+
+import Layout from './components/Layout';
+import store from './store';
+
+const app = document.getElementById('app');
+
+ReactDom.render(
+  // Important, all components have the STORE
+  <Provider store={store}>
+    <Layout />
+  </Provider> , app);
+```
+
 ## Store
 ```
 ```
@@ -123,7 +148,7 @@ let todoApp = combineReducers({
   import { applyMiddleware } from 'redux';
 
     // SET
-  const middleware= applyMiddleware(promisse(), thunk, logger());
+  const middleware= applyMiddleware(promise(), thunk, logger());
   ```
 ### Redux Logger
   - Registry logs
@@ -138,7 +163,7 @@ import thunk from 'redux-thunk';
 ### Promisse
   - Create automatically actions with base in result
 ```
-import promisse from 'redux-promisse';
+import promise from 'redux-promise-middleware';
 ```    
   - Example
     - The code down, generate the actions:

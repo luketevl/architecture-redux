@@ -1,17 +1,9 @@
-import { applyMiddleware, createStore } from 'redux';
-import logger from 'redux-logger';
-import axios from 'axios';
-import thunk from 'redux-thunk';
-import promise from 'redux-promise-middleware';
-
-const initialState = {
+export default function reducer (state = {
+  tweets: [],
   fetching: false,
   fetched: false,
-  users: [],
-  error: null
-}
-
-const reducer = (state = initialState, action) =>{
+  eror: null
+}, action){
   switch (action.type){
     case 'FETCH_USERS_PENDING': {
       return {...state, fetching: true}
