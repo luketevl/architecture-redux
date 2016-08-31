@@ -140,11 +140,11 @@ import thunk from 'redux-thunk';
 ```
 import promisse from 'redux-promisse';
 ```    
-    - Example
-      - The code down, generate the actions:
-        - FECTH_USER_**PENDING**
-        - FECTH_USER_**FULFILLED**
-        - FECTH_USER_**REJECTED**
+  - Example
+    - The code down, generate the actions:
+      - FECTH_USER_**PENDING**
+      - FECTH_USER_**FULFILLED**
+      - FECTH_USER_**REJECTED**
 ```
 store.dispatch({
   type: 'FECTH_USER',
