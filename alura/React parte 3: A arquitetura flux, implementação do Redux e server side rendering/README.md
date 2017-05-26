@@ -146,12 +146,12 @@ function x(param){
 }
 ```
 
-## REACT REDUX
+## REDUX REDUX
 > Possibilita ter acesso a **store** em todos os **componentes**
 
 - Install
 ```shell
-npm install react-redux --save
+npm install redux-redux --save
 ```
 
 - Configurando
