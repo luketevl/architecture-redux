@@ -151,7 +151,7 @@ function x(param){
 
 - Install
 ```shell
-npm install redux-redux --save
+npm install redux-thunk --save
 ```
 
 - Configurando
