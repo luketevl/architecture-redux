@@ -1,4 +1,4 @@
-import { combineReducer, combineReducers } from 'redux';
+import { combineReducers } from 'redux';
 import counterReducer from './counter';
 import resultsReducer from './results';
 

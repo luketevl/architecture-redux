@@ -5,7 +5,9 @@
 - http://redux.js.org/docs/basics/Actions.html
 - http://redux.js.org/docs/basics/Reducers.html
 - http://redux.js.org/docs/FAQ.html
-
+- http://redux.js.org/docs/advanced/Middleware.html
+- https://github.com/gaearon/redux-thunk
+- http://redux.js.org/docs/advanced/AsyncActions.html
 
 ## FLOW
 ![Flow](https://i.imgur.com/wrbXtD6.png)
@@ -95,7 +97,7 @@ const reducerCombine = combineReducers(
 const store = createStore(reducerCombine);
 ```
 
-- Step 3
+- Step 4
   - Install lib
 ```shell
 yarn add react-redux --save
@@ -126,17 +128,86 @@ const mapDispatchToProps = dispatch => ({
 export default connect(mapStateToProps, mapDispatchToProps)(Counter);
 ```
 
+- Step 5
+  - Create the **action**
+```js
+export const increment = () => ({
+  type: 'INCREMENT'
+})
+
+export const decrement = () => ({
+  type: 'DECREMENT'
+})
+
+export const add = (value) => ({
+  type: 'ADD',
+  value
+})
+
+export const sub = (value) => ({
+  type: 'SUB',
+  value
+})
+```
+- Step 6
+  - Remove the methods in component **mapDispatchToProps**.
+```js
+// bad
+const mapDispatchToProps = dispatch => ({
+    onIncrementCounter: () => dispatch({
+        type: 'INCREMENT'
+    })
+});
+
+// good
+import * as counterAction from '../../actions/counterActions';
+
+const mapDispatchToProps = dispatch => ({
+    onIncrementCounter: () => dispatch(counterAction.increment()),
+});
+```
+
 ![Types of state](https://i.imgur.com/BJDVNvI.png)
+![Where to put the logic](https://i.imgur.com/cLGOlXJ.png)
 
+# MIDDLEWARES
+![Middleware](https://i.imgur.com/N5mWlyL.png)
 
-# FUNCTIONS 
+- Creating middleware
+```js
+import { applyMiddleware } from 'redux';
 
+const logger = store => next => action => {
+  console.log(`[middleware] Dispathing`, action);
+  const result = next(action);
+  console.log(`[middleware] next state`, store.getState());
+  return result;
+}
+
+const store = createStore(reducers, applyMiddleware(logger));
+```
+
+## REDUX THUNK
+```js
+import thunk from 'redux-thunk';
+```
 
 ## Libraries
 - Redux
 ```shell
 npm install redux --save
 ```
+- React Redux
+```shell
+npm install react-redux --save
+```
+
+- Redux Thunk
+  - For asynchronous code
+```shell
+npm install redux-thunk --save
+```
+
 
 # OBSERVATION
 - Independent of plataform
