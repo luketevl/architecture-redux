@@ -1,4 +1,10 @@
 # LINKS
+- http://redux.js.org/docs/recipes/reducers/ImmutableUpdatePatterns.html
+- http://redux.js.org/
+- http://redux.js.org/docs/introduction/CoreConcepts.html
+- http://redux.js.org/docs/basics/Actions.html
+- http://redux.js.org/docs/basics/Reducers.html
+- http://redux.js.org/docs/FAQ.html
 
 
 ## FLOW
@@ -68,10 +74,60 @@ store.dispatch({
 
 # CONNECTING REDUX AND REACT
 
-- Step1
+-Step 1
+  - Create the **reducer**
 ```js
-import { createStore } from 'redux';
+const initialState = {};
+const reducer = (state, action) => return ...state;
 ```
+
+- Step 2
+  - Create te **store**
+```js
+import { createStore, combineReducers } from 'redux';
+const reducerCombine = combineReducers(
+  {
+    r1: reducer1,
+    rr2: reducer2
+  }
+);
+
+const store = createStore(reducerCombine);
+```
+
+- Step 3
+  - Install lib
+```shell
+yarn add react-redux --save
+```
+  - Connect **store** to **react** in the wrapper
+```js
+import {  Provider } from 'react-redux';
+<Provider store={store}>
+  <App />
+</Provider>
+```
+  - Connect component
+    - **mapStateToProps(state)** | Define the state that your component needed.
+    - connect(mapStateToProps, )(Component);
+```js
+import { connect } from 'react-redux';
+class Counter extends Component{}
+
+const mapStateToProps = state => ({
+  ctr: state.counter
+});
+
+const mapDispatchToProps = dispatch => ({
+    onIncrementCounter: () => dispatch({
+        type: 'INCREMENT'
+    })
+});
+export default connect(mapStateToProps, mapDispatchToProps)(Counter);
+```
+
+![Types of state](https://i.imgur.com/BJDVNvI.png)
+
 
 # FUNCTIONS 
 
@@ -84,3 +140,5 @@ npm install redux --save
 
 # OBSERVATION
 - Independent of plataform
+- **Action**
+  - Create file **actionTypes** to types name
